@@ -1,26 +1,24 @@
 import Phaser from "phaser";
-import logoImg from "@/assets/logo.png";
 
 export class Tutorial extends Phaser.Scene {
   constructor() {
-    super();
+    super("Tutorial");
   }
-
   preload() {
-    console.log("loaded");
-    this.load.image("logo", logoImg);
+    console.log("Preloading");
   }
 
   create() {
-    const logo = this.add.image(400, 150, "logo");
+    // create the Tilemap
+    const map = this.make.tilemap({ key: "tilemap" });
 
-    this.tweens.add({
-      targets: logo,
-      y: 450,
-      duration: 500,
-      ease: "Power2",
-      yoyo: true,
-      loop: -1
-    });
+    // add the tileset image we are using
+    const tileset = map.addTilesetImage("standard_tiles", "base_tiles");
+
+    // create the layers we want in the right order
+    map.createStaticLayer("Background", tileset);
+
+    // "Ground" layer will be on top of "Background" layer
+    map.createStaticLayer("Ground", tileset);
   }
 }
