@@ -3,7 +3,7 @@ import logoImg from "@/assets/logo.png";
 
 export class Level1 extends Phaser.Scene {
   constructor() {
-    super();
+    super("Level1");
   }
 
   preload() {
