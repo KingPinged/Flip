@@ -7,6 +7,9 @@ import Phaser from "phaser";
 
 import { MyGame } from "./game";
 
+//scenes
+import { Tutorial, Level1 } from "@/scenes";
+
 import { calculateGameSize } from "@/utils/calculateDimensions";
 
 const { width, height, multiplier } = calculateGameSize();
@@ -43,7 +46,7 @@ function Viewpager() {
         autoCenter: Phaser.Scale.CENTER_BOTH,
         mode: Phaser.Scale.ENVELOP
       },
-      scene: MyGame,
+      scene: [Tutorial,Level1],
       //scene: [BootScene, MainMenuScene, GameScene, GameOverScene],
       physics: {
         default: "arcade"
