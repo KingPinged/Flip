@@ -7,6 +7,9 @@ import Phaser from "phaser";
 
 import { MyGame } from "./game";
 
+//scenes
+import { Tutorial, Level1 } from "@/scenes";
+
 import { calculateGameSize } from "@/utils/calculateDimensions";
 
 const { width, height, multiplier } = calculateGameSize();
