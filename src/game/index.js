@@ -8,13 +8,14 @@ export class MyGame extends Phaser.Scene {
 
   preload() {
     this.load.image('Tiles', 'assests/tiles.png')
-    this.load.tilemapTiledJSON('testPhaserMap', 'assests/testPhaserMap.json')               
+    this.load.tilemapTiledJSON('testPhaserMap', 'assests/newMap.json')               
   }
 
   create() {
     this.add.image(0,0,'testPhaserMap')
-    const tileset = map.addTilesetImage('standard_tiles', 'base_tiles')
     const map = this.make.tilemap({ key: 'tilemap' })
+    const tileset = map.addTilesetImage('standard_tiles', 'base_tiles')
+   
     map.createStaticLayer('Background', tileset)
     map.createStaticLayer('Ground', tileset)
     }
