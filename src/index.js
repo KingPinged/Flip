@@ -46,7 +46,7 @@ function Viewpager() {
         autoCenter: Phaser.Scale.CENTER_BOTH,
         mode: Phaser.Scale.ENVELOP
       },
-      scene: MyGame,
+      scene: [Tutorial,Level1],
       //scene: [BootScene, MainMenuScene, GameScene, GameOverScene],
       physics: {
         default: "arcade"
