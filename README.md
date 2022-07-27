@@ -7,7 +7,7 @@ Tiled, Phaser, React Spring, React, Zustand,
 
 
 For Team Members: 
-Pushing changes requires a new pull request on a different branch to be reviewed. No force push.
+Pushing changes to main branch requires a new pull request on a different branch to be reviewed.
 
 Build it:
 npm run start
