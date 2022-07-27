@@ -1,0 +1,159 @@
+{
+  "frames": {
+    "Bridge.png": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 82,
+        "h": 10
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 140,
+        "w": 82,
+        "h": 10
+      },
+      "sourceSize": {
+        "w": 150,
+        "h": 150
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "WallCliff.png": {
+      "frame": {
+        "x": 82,
+        "y": 0,
+        "w": 81,
+        "h": 59
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 91,
+        "w": 81,
+        "h": 59
+      },
+      "sourceSize": {
+        "w": 150,
+        "h": 150
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "Basicfloor.png": {
+      "frame": {
+        "x": 0,
+        "y": 10,
+        "w": 51,
+        "h": 36
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 114,
+        "w": 51,
+        "h": 36
+      },
+      "sourceSize": {
+        "w": 150,
+        "h": 150
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "wall.png": {
+      "frame": {
+        "x": 51,
+        "y": 10,
+        "w": 23,
+        "h": 40
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 110,
+        "w": 23,
+        "h": 40
+      },
+      "sourceSize": {
+        "w": 150,
+        "h": 150
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "floortowall.png": {
+      "frame": {
+        "x": 0,
+        "y": 46,
+        "w": 34,
+        "h": 49
+      },
+      "rotated": true,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 101,
+        "w": 34,
+        "h": 49
+      },
+      "sourceSize": {
+        "w": 150,
+        "h": 150
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "WallToFloor.png": {
+      "frame": {
+        "x": 49,
+        "y": 50,
+        "w": 21,
+        "h": 48
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 102,
+        "w": 21,
+        "h": 48
+      },
+      "sourceSize": {
+        "w": 150,
+        "h": 150
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  },
+  "meta": {
+    "app": "http://free-tex-packer.com",
+    "version": "0.6.7",
+    "image": "Tiles TEX.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 163,
+      "h": 98
+    },
+    "scale": 1
+  }
+}
