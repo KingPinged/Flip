@@ -49,7 +49,10 @@ function Viewpager() {
       scene: [BootScene, Tutorial, Level1],
       //scene: [BootScene, MainMenuScene, GameScene, GameOverScene],
       physics: {
-        default: "arcade"
+        default: "arcade",
+        arcade: {
+          gravity: { y: 1000 }
+        }
       },
       backgroundColor: "#000000"
     });

@@ -1,4 +1,5 @@
 import { Scene } from "phaser";
+import Phaser from "phaser";
 
 import background from "@/assets/images/background.png";
 import level1 from "@/assets/tilemaps/level1.json";
@@ -7,29 +8,24 @@ import spike from "@/assets/images/spike.png";
 import playerPng from "@/assets/images/kenney_player.png";
 import playerAtlas from "@/assets/images/kenney_player_atlas.json";
 
+import tiledJson from "@/assets/tilemaps/level1.json";
+import platformerTiles from "@/assets/tilesets/platformer_tiles.png";
+import playerSprite from "@/assets/tilesets/dude-cropped.png";
+
+import testingMap from "@/assets/tilemaps/untitled.json";
+
 export default class BootScene extends Scene {
   constructor() {
     super("BootScene");
   }
 
   preload() {
-    // Image layers from Tiled can't be exported to Phaser 3 (as yet)
-    // So we add the background image separately
-    this.load.image("background", background);
-    // Load the tileset image file, needed for the map to know what
-    // tiles to draw on the screen
-    this.load.image("tiles", platformTilesheet);
-    // Even though we load the tilesheet with the spike image, we need to
-    // load the Spike image separately for Phaser 3 to render it
-    this.load.image("spike", spike);
-    // Load the export Tiled JSON
-    this.load.tilemapTiledJSON("map",level1);
-    // Load player animations from the player spritesheet and atlas JSON
-    this.load.atlas(
-      "player",
-      playerPng,
-      playerAtlas
-    );
+    this.load.tilemapTiledJSON("map", testingMap);
+    this.load.image("platformer_tiles", platformerTiles);
+    this.load.spritesheet("player", playerSprite, {
+      frameWidth: 32,
+      frameHeight: 42
+    });
 
     const fontSize = 16;
 
