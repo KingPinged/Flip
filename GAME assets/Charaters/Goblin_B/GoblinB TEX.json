@@ -1,0 +1,183 @@
+{
+  "frames": {
+    "GoblinBIdle.png": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 23,
+        "h": 29
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 15,
+        "y": 22,
+        "w": 23,
+        "h": 29
+      },
+      "sourceSize": {
+        "w": 50,
+        "h": 51
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "GoblinBRun3.png": {
+      "frame": {
+        "x": 0,
+        "y": 29,
+        "w": 21,
+        "h": 29
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 13,
+        "y": 22,
+        "w": 21,
+        "h": 29
+      },
+      "sourceSize": {
+        "w": 50,
+        "h": 51
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "GoblinBRun2.png": {
+      "frame": {
+        "x": 0,
+        "y": 58,
+        "w": 18,
+        "h": 29
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 16,
+        "y": 22,
+        "w": 18,
+        "h": 29
+      },
+      "sourceSize": {
+        "w": 50,
+        "h": 51
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "GoblinBRun4.png": {
+      "frame": {
+        "x": 0,
+        "y": 87,
+        "w": 17,
+        "h": 29
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 17,
+        "y": 22,
+        "w": 17,
+        "h": 29
+      },
+      "sourceSize": {
+        "w": 50,
+        "h": 51
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "GoblinBRun6.png": {
+      "frame": {
+        "x": 0,
+        "y": 116,
+        "w": 18,
+        "h": 28
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 16,
+        "y": 23,
+        "w": 18,
+        "h": 28
+      },
+      "sourceSize": {
+        "w": 50,
+        "h": 51
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "GoblinBRun1.png": {
+      "frame": {
+        "x": 17,
+        "y": 87,
+        "w": 15,
+        "h": 28
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 19,
+        "y": 23,
+        "w": 15,
+        "h": 28
+      },
+      "sourceSize": {
+        "w": 50,
+        "h": 51
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    },
+    "GoblinBRun5.png": {
+      "frame": {
+        "x": 18,
+        "y": 58,
+        "w": 15,
+        "h": 28
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 19,
+        "y": 23,
+        "w": 15,
+        "h": 28
+      },
+      "sourceSize": {
+        "w": 50,
+        "h": 51
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      }
+    }
+  },
+  "meta": {
+    "app": "http://free-tex-packer.com",
+    "version": "0.6.7",
+    "image": "GoblinB TEX.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 33,
+      "h": 144
+    },
+    "scale": 1
+  }
+}
