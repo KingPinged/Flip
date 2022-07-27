@@ -9,7 +9,6 @@ export class Tutorial extends Phaser.Scene {
   }
 
   create() {
-    // create the Tilemap
     const map = this.make.tilemap({ key: "tilemap" });
 
     // add the tileset image we are using
