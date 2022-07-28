@@ -10,4 +10,8 @@ For Team Members:
 Pushing changes to main branch requires a new pull request on a different branch to be reviewed.
 
 Build it:
-npm run start
+```bash
+  npm run start
+```
+
+```
