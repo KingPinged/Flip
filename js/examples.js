@@ -26,9 +26,7 @@ const main = function () {
         <div>
           <a href="${repo + pathname}">
             <div id="floating-action-button">
-              <div>${'❮❯'}</div>
-            </div>
-          </a>
+              <div>${'❮❯'}</divMainScene
         </div>`
             render(element, document.body, false)
         })
