@@ -1,10 +1,16 @@
+
+
+
 import { enable3d, Scene3D, Canvas, ExtendedObject3D, THREE } from '@enable3d/phaser-extension'
 
 export default class Enemy {
   /** give the enemy xyz coords */
-  constructor(scene, x, y, z) {
+  constructor(scene, start, end) {
+
+    let { x, y, z } = start
     scene.third.load.gltf('../../assets/glb/robot.glb').then((gltf) => {
       const enemy = new ExtendedObject3D()
+      enemy.name = "enemy"
       enemy.add(gltf.scene)
 
       if (x && y && z) enemy.position.set(x, y, z)
