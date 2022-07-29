@@ -1,4 +1,5 @@
 import * as Phaser from 'phaser'
+import * as ammo from "ammo.js";
 import { enable3d, Canvas } from '@enable3d/phaser-extension'
 import MainScene from './scenes/mainScene'
 
