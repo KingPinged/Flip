@@ -2,30 +2,48 @@
 
 import { enable3d, Scene3D, Canvas, ExtendedObject3D, THREE } from '@enable3d/phaser-extension'
 
+import { randomColor } from '../util.js'
+
 export default class Platform {
   /** give the Platform xyz coords. End is optional */
-  constructor(scene, config, material, end = false) {
+  constructor(scene, config, material, end = false, randomColorP = false) {
     this.raycaster = scene.third.physics.add.raycaster('closest')
 
+    this.config = config
     this.player = scene.robot
-
+    this.material = material
     this.platform = scene.third.physics.add.box(config, material)
-
     this.end = end
+    this.randomColorP = randomColorP
+    //  console.log(randomColorP)
   }
 
   getType() {
-    if (this.end) return 'moving'
-    return 'static'
+    let types = []
+    if (this.end) types.push('moving')
+    else types.push('static')
+
+    if (this.randomColorP) types.push('randomColor')
+    return types
   }
 
   //only call update if getType === moving
   update(scene, time) {
-    if (!scene.robot.getPlayer() || !scene.robot.getPlayer().body) return
+    console.log(this.randomColorP)
+    if (this.randomColorP && Math.floor((time / 100) % 10) === 0) {
+      console.log('here')
+      const newColor = randomColor()
+      this.platform.material = scene.third.add.material({
+        standard: { color: newColor, emissive: newColor, roughness: 0.4, metalness: 1, skinning: true }
+      })
+      this.platform.material.needsUpdate = true
+    }
+
+    if (!scene.robot.getPlayer() || !scene.robot.getPlayer().body || !this.end) return
     this.player = scene.robot.getPlayer()
     const { x, y, z } = scene.robot.getPlayer().position
 
-    console.log(Math.sin(time / 10000))
+    //console.log(Math.sin(time / 10000))
     //sin has min 0 and max 1 given time is always increasing
     this.platform.position.x = (Math.sin(time / 1000) + 1) * 5 + 12
     this.platform.body.needUpdate = true

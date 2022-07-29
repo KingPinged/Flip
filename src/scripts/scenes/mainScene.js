@@ -3,6 +3,7 @@ import { enable3d, Scene3D, Canvas, ExtendedObject3D, THREE } from '@enable3d/ph
 import Enemy from '../entities/enemy'
 import Player from '../entities/player'
 import Platform from '../entities/platform'
+import Star from '../entities/star'
 
 export default class MainScene extends Scene3D {
   constructor() {
@@ -47,8 +48,19 @@ export default class MainScene extends Scene3D {
     // add platforms
     const platformMaterial = { phong: { transparent: true, color: 0x21572f } }
     const platforms = [
-      new Platform(this, { name: 'platform-ground', y: -2, width: 30, depth: 5, height: 2, mass: 0 }, platformMaterial),
-      new Platform(this, { name: 'platform-right1', x: 7, y: 4, width: 15, depth: 5, mass: 0 }, platformMaterial),
+      new Platform(
+        this,
+        { name: 'platform-ground', y: -2, width: 30, depth: 5, height: 2, mass: 0 },
+        platformMaterial,
+        false
+      ),
+      new Platform(
+        this,
+        { name: 'platform-right1', x: 7, y: 4, width: 15, depth: 5, mass: 0 },
+        platformMaterial,
+        false,
+        true
+      ),
       new Platform(this, { name: 'platform-left', x: -10, y: 7, width: 10, depth: 5, mass: 0 }, platformMaterial),
       new Platform(this, { name: 'platform-right2', x: 10, y: 10, width: 10, depth: 5, mass: 0 }, platformMaterial),
       new Platform(
@@ -64,9 +76,6 @@ export default class MainScene extends Scene3D {
     })
 
     // add stars
-    const svg = this.cache.html.get('star')
-    const starShape = this.third.transform.fromSVGtoShape(svg)
-    const starScale = 250
     const starPositions = [
       { x: -14, y: 8.5 },
       { x: -12, y: 8.5 },
@@ -82,10 +91,12 @@ export default class MainScene extends Scene3D {
       { x: 8, y: 11.5 },
       { x: 10, y: 11.5 },
       { x: 12, y: 11.5 },
-      { x: 14, y: 11.5 }
+      { x: 14, y: 11.5, float: true, random: true },
+      {}
     ]
     starPositions.forEach((pos, i) => {
-      const star = this.third.add.extrude({ shape: starShape[0], depth: 120 })
+      let star = new Star(this, pos, i, true, true) //pos.float)
+      /*const star = this.third.add.extrude({ shape: starShape[0], depth: 120 })
       star.name = `star-${i}`
       star.scale.set(1 / starScale, 1 / -starScale, 1 / starScale)
       star.material.color.setHex(0xffd851)
@@ -98,7 +109,7 @@ export default class MainScene extends Scene3D {
         height: 0.5,
         depth: 0.5
       })
-      star.body.setCollisionFlags(6)
+      star.body.setCollisionFlags(6)*/
       this.stars.push(star)
     })
 
@@ -118,14 +129,16 @@ export default class MainScene extends Scene3D {
     // rotate the starts
     // (this looks strange I know, I will try to improve this in a future update)
     this.stars.forEach((star) => {
-      if (!star.userData.dead) {
+      star.update(this, time)
+      /*if (!star.userData.dead) {
         star.rotation.y += 0.03
         star.body.needUpdate = true
-      }
+      }*/
     })
 
     this.platforms.forEach((platform) => {
-      if (platform.getType() === 'moving') {
+      //if the platform is moving or has changing colors
+      if (platform.getType().includes('moving') || platform.getType().includes('randomColor')) {
         platform.update(this, time)
       }
     })
