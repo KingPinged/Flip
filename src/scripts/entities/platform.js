@@ -5,10 +5,14 @@ import { enable3d, Scene3D, Canvas, ExtendedObject3D, THREE } from '@enable3d/ph
 export default class Platform {
     /** give the Platform xyz coords */
     constructor(scene, material, config) {
-        scene.third.physics.add.box(
+        this.platform = scene.third.physics.add.box(
             config,
             material
         )
 
+    }
+
+    getPlatform() {
+        return this.platform
     }
 }
