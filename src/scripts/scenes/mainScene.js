@@ -2,6 +2,7 @@ import { enable3d, Scene3D, Canvas, ExtendedObject3D, THREE } from '@enable3d/ph
 
 import Enemy from '../entities/enemy'
 import Player from '../entities/player'
+import Platform from '../entities/platform'
 
 export default class MainScene extends Scene3D {
   constructor() {
@@ -45,19 +46,22 @@ export default class MainScene extends Scene3D {
     // add platforms
     const platformMaterial = { phong: { transparent: true, color: 0x21572f } }
     const platforms = [
-      this.third.physics.add.box(
+      new Platform(this,
         { name: 'platform-ground', y: -2, width: 30, depth: 5, height: 2, mass: 0 },
         platformMaterial
       ),
-      this.third.physics.add.box(
+      new Platform(
+        this,
         { name: 'platform-right1', x: 7, y: 4, width: 15, depth: 5, mass: 0 },
         platformMaterial
       ),
-      this.third.physics.add.box(
+      new Platform(
+        this,
         { name: 'platform-left', x: -10, y: 7, width: 10, depth: 5, mass: 0 },
         platformMaterial
       ),
-      this.third.physics.add.box(
+      new Platform(
+        this,
         { name: 'platform-right2', x: 10, y: 10, width: 10, depth: 5, mass: 0 },
         platformMaterial
       )
