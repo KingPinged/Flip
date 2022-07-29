@@ -16,6 +16,16 @@ export default class Platform {
     this.end = end
     this.randomColorP = randomColorP
     //  console.log(randomColorP)
+
+    if (this.randomColorP) {
+      setInterval(() => {
+        const newColor = randomColor()
+        this.platform.material = scene.third.add.material({
+          standard: { color: newColor, emissive: newColor, roughness: 0.4, metalness: 1, skinning: true }
+        })
+        this.platform.material.needsUpdate = true
+      }, 1000)
+    }
   }
 
   getType() {
@@ -29,7 +39,8 @@ export default class Platform {
 
   //only call update if getType === moving
   update(scene, time) {
-    console.log(this.randomColorP)
+    //This may not be needed since it runs update every frame thus you should just use js setInterval
+    /*  console.log(this.randomColorP)
     if (this.randomColorP && Math.floor((time / 100) % 10) === 0) {
       console.log('here')
       const newColor = randomColor()
@@ -38,7 +49,7 @@ export default class Platform {
       })
       this.platform.material.needsUpdate = true
     }
-
+*/
     if (!scene.robot.getPlayer() || !scene.robot.getPlayer().body || !this.end) return
     this.player = scene.robot.getPlayer()
     const { x, y, z } = scene.robot.getPlayer().position

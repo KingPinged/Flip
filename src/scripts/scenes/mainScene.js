@@ -45,6 +45,14 @@ export default class MainScene extends Scene3D {
     this.scoreText.setOrigin(0, 1)
     this.scoreText.depth = 1
 
+    // add score text
+    this.scoreText = this.add.text(32, this.cameras.main.height - 32, 'score: 0', {
+      fontSize: '32px',
+      fill: '#000'
+    })
+    this.scoreText.setOrigin(0, 1)
+    this.scoreText.depth = 1
+
     // add platforms
     const platformMaterial = { phong: { transparent: true, color: 0x21572f } }
     const platforms = [
