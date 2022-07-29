@@ -1,5 +1,5 @@
 import { enable3d, Scene3D, Canvas, ExtendedObject3D, THREE } from '@enable3d/phaser-extension'
-
+import Phaser from 'phaser'
 export default class Player {
   getPlayer() {
     return this.player
@@ -62,7 +62,7 @@ export default class Player {
       w: scene.input.keyboard.addKey('w'),
       a: scene.input.keyboard.addKey('a'),
       d: scene.input.keyboard.addKey('d'),
-      space: scene.input.keyboard.addkey('s')
+      space: scene.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR)
     }
     this.gravityDown = 'down'
     scene.third.load.gltf('../../assets/glb/robot.glb').then((gltf) => {
