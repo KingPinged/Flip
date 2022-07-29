@@ -5,7 +5,7 @@ import { enable3d, Scene3D, Canvas, ExtendedObject3D, THREE } from '@enable3d/ph
 
 export default class Enemy {
   /** give the enemy xyz coords */
-  constructor(scene, start, end) {
+  constructor(scene, start = {}, end) {
 
     let { x, y, z } = start
     scene.third.load.gltf('../../assets/glb/robot.glb').then((gltf) => {

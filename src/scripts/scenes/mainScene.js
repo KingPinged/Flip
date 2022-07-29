@@ -18,6 +18,7 @@ export default class MainScene extends Scene3D {
     this.accessThirdDimension({ gravity: { x: 0, y: -20, z: 0 } })
     delete this.robot
     this.enemies = []
+    this.platforms = []
     this.stars = []
     this.score = 0
   }
@@ -64,8 +65,17 @@ export default class MainScene extends Scene3D {
         this,
         { name: 'platform-right2', x: 10, y: 10, width: 10, depth: 5, mass: 0 },
         platformMaterial
+      ),
+      new Platform(this,
+        { name: 'platform-right3', x: 10, y: 8, width: 10, depth: 5, mass: 10, collisionFlags: 2 },
+        platformMaterial,
+        true
       )
     ]
+
+    platforms.forEach((platform) => {
+      this.platforms.push(platform)
+    })
 
     // add stars
     const svg = this.cache.html.get('star')
@@ -125,6 +135,12 @@ export default class MainScene extends Scene3D {
       if (!star.userData.dead) {
         star.rotation.y += 0.03
         star.body.needUpdate = true
+      }
+    })
+
+    this.platforms.forEach((platform) => {
+      if (platform.getType() === "moving") {
+        platform.update(this, time)
       }
     })
 

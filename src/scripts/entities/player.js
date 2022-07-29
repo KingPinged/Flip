@@ -1,6 +1,9 @@
 import { enable3d, Scene3D, Canvas, ExtendedObject3D, THREE } from '@enable3d/phaser-extension'
 import Phaser from 'phaser'
 
+
+//TODO: debounce the gravity switch effect
+
 import gameConfig from "../../config/game.js"
 import { rotate, teleport } from '../util.js'
 export default class Player {
