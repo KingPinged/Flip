@@ -47,26 +47,12 @@ export default class MainScene extends Scene3D {
     // add platforms
     const platformMaterial = { phong: { transparent: true, color: 0x21572f } }
     const platforms = [
-      new Platform(this,
-        { name: 'platform-ground', y: -2, width: 30, depth: 5, height: 2, mass: 0 },
-        platformMaterial
-      ),
+      new Platform(this, { name: 'platform-ground', y: -2, width: 30, depth: 5, height: 2, mass: 0 }, platformMaterial),
+      new Platform(this, { name: 'platform-right1', x: 7, y: 4, width: 15, depth: 5, mass: 0 }, platformMaterial),
+      new Platform(this, { name: 'platform-left', x: -10, y: 7, width: 10, depth: 5, mass: 0 }, platformMaterial),
+      new Platform(this, { name: 'platform-right2', x: 10, y: 10, width: 10, depth: 5, mass: 0 }, platformMaterial),
       new Platform(
         this,
-        { name: 'platform-right1', x: 7, y: 4, width: 15, depth: 5, mass: 0 },
-        platformMaterial
-      ),
-      new Platform(
-        this,
-        { name: 'platform-left', x: -10, y: 7, width: 10, depth: 5, mass: 0 },
-        platformMaterial
-      ),
-      new Platform(
-        this,
-        { name: 'platform-right2', x: 10, y: 10, width: 10, depth: 5, mass: 0 },
-        platformMaterial
-      ),
-      new Platform(this,
         { name: 'platform-right3', x: 10, y: 8, width: 10, depth: 5, mass: 10, collisionFlags: 2 },
         platformMaterial,
         true
@@ -139,7 +125,7 @@ export default class MainScene extends Scene3D {
     })
 
     this.platforms.forEach((platform) => {
-      if (platform.getType() === "moving") {
+      if (platform.getType() === 'moving') {
         platform.update(this, time)
       }
     })

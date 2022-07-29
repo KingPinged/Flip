@@ -1,10 +1,9 @@
 import { enable3d, Scene3D, Canvas, ExtendedObject3D, THREE } from '@enable3d/phaser-extension'
 import Phaser from 'phaser'
 
-
 //TODO: debounce the gravity switch effect
 
-import gameConfig from "../../config/game.js"
+import gameConfig from '../../config/game.js'
 import { rotate, teleport } from '../util.js'
 export default class Player {
   getPlayer() {
@@ -14,37 +13,41 @@ export default class Player {
     if (this.player.animation.current !== 'Walking') this.player.animation.play('Walking')
   }
 
-  idleAnimation() {
+  setIdle(self) {
     if (this.player.animation.current !== 'Idle') this.player.animation.play('Idle')
+
+    const curPos = self.third.camera.position
+    //camera zoom in
+    // self.third.camera.position.lerp(new THREE.Vector3(curPos.x, curPos.y, 4), 0.5)
   }
 
   async update(self) {
     if (!this.player || !this.player.body) return
+
+    const curPos = this.player.position
     // add just the camera position
-    self.third.camera.position.copy(this.player.position).add(new THREE.Vector3(0, 5, 16))
+    //self.third.camera.position.copy(this.player.position).add(new THREE.Vector3(0, 5, 25))
+
+    self.third.camera.position.lerp(new THREE.Vector3(curPos.x, curPos.y + 5, 25), 0.5)
 
     // get rotation of robot
     const theta = this.player.world.theta
     this.player.body.setAngularVelocityY(0)
     this.player.body.setAngularVelocityZ(0)
 
-
     //TODO: for some reason the player gravity does not register this is a workaround Rotate too
     this.player.body.setGravity(0, this.gravityDown ? -9.9 : 9.9, 0)
     // rotate(this.player, 0, 0, this.gravityDown ? 0 : 180)
 
-
     // set the speed variable
     const speed = 7
-
 
     //check if player is past the height limit
     if (this.player.position.y > gameConfig.heightLimit || this.player.position.y < gameConfig.heightMin) {
       await teleport(this.player, 0, 0, 0)
       this.player.body.setGravity(0, this.gravityDown ? -9.9 : 9.9, 0)
-      console.log("player is past the height limit")
+      console.log('player is past the height limit')
     }
-
 
     // move left
     if (this.keys.a.isDown) {
@@ -61,7 +64,10 @@ export default class Player {
     // do not move
     else {
       this.player.body.setVelocityX(0)
-      this.idleAnimation()
+
+      //idle animation is handled in setIdle
+      //this.idleAnimation()
+      this.setIdle(self)
     }
 
     // jump
@@ -73,13 +79,20 @@ export default class Player {
     function degreesToRadians(degrees) {
       return degrees * (Math.PI / 180)
     }
-    if (this.keys.space.isDown && this.player.userData.onGround) {
+    if (this.keys.space.isDown && this.player.userData.onGround && this.canJump) {
+      this.canJump = false
       this.player.animation.play('WalkJump')
       this.player.body.applyForceY(this.gravityDown ? 15 : -15)
       this.gravityDown = !this.gravityDown
       //TODO: set gravity as config
       this.player.body.setGravity(0, this.gravityDown ? -15 : 15, 0)
       await rotate(this.player, 0, 0, this.gravityDown ? 0 : 180)
+
+      // this.canJump = true
+      //TODO: may not be needed since rotate returns promise and may be the cause of error
+      setTimeout(() => {
+        this.canJump = true
+      }, 1000)
       //this.player.rotation.set(degreesToRadians(90), degreesToRadians(130), degreesToRadians(180))
 
       /*
@@ -96,17 +109,17 @@ export default class Player {
               this.player.body.setVelocity(0, 0, 0)
               this.player.body.setAngularVelocity(0, 0, 0)
             })*/
-
     }
   }
 
   /** give the this.player xyz coords */
   constructor(scene, x, y, z) {
+    this.canJump = true
     this.keys = {
       w: scene.input.keyboard.addKey('w'),
       a: scene.input.keyboard.addKey('a'),
       d: scene.input.keyboard.addKey('d'),
-      space: scene.input.keyboard.addKey("space")
+      space: scene.input.keyboard.addKey('space')
     }
     this.gravityDown = true
     scene.third.load.gltf('../../assets/glb/robot.glb').then((gltf) => {
@@ -140,7 +153,6 @@ export default class Player {
         offset: { y: -0.8 }
       })
 
-
       this.player.body.setLinearFactor(1, 1, 0)
       this.player.body.setAngularFactor(0, 0, 0)
       this.player.body.setFriction(0)
@@ -164,7 +176,6 @@ export default class Player {
         }
       })
 
-
       // check robot overlap with star or enemy
       this.player.body.on.collision((otherObject, event) => {
         if (/star/.test(otherObject.name)) {
@@ -183,7 +194,6 @@ export default class Player {
             scene.scoreText.setText(`score: ${scene.score}`)
             scene.third.physics.destroy(otherObject)
           }
-
         }
       })
     })
