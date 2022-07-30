@@ -38,18 +38,25 @@ export async function rotate(object, x, y, z) {
   object.body.setCollisionFlags(2)
 
   // set the new position
+  //object.body.setAngularVelocityZ(180)
   object.rotation.set(x * (Math.PI / 180), y * (Math.PI / 180), z * (Math.PI / 180))
+  //const currentPos = object.position
+
+  //object.position.set(currentPos.x, currentPos.y, currentPos.z)
+
+  //object.body.rotateOnAxis(object.position, (Math.PI / 180) * 90)
 
   object.body.needUpdate = true
 
   return new Promise((resolve, reject) => {
-    object.body.once.update(() => {
+    object.body.once.update(async () => {
       // set body back to dynamic
       object.body.setCollisionFlags(0)
 
       // if you do not reset the velocity and angularVelocity, the object will keep it
       object.body.setVelocity(0, 0, 0)
       object.body.setAngularVelocity(0, 0, 0)
+
       resolve()
     })
   })

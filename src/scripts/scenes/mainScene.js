@@ -32,7 +32,7 @@ export default class MainScene extends Scene3D {
     this.third.camera.lookAt(0, 0, 0)
 
     // enable physics debugging
-    this.third.physics.debug.enable()
+    //this.third.physics.debug.enable()
 
     // add background image
     this.third.load.texture('sky').then((sky) => (this.third.scene.background = sky))
@@ -73,9 +73,40 @@ export default class MainScene extends Scene3D {
       new Platform(this, { name: 'platform-right2', x: 10, y: 10, width: 10, depth: 5, mass: 0 }, platformMaterial),
       new Platform(
         this,
-        { name: 'platform-right3', x: 10, y: 8, width: 10, depth: 5, mass: 10, collisionFlags: 2 },
+        { name: 'platform-right3', x: 20, y: 8, width: 10, depth: 5, mass: 10, collisionFlags: 2 },
         platformMaterial,
         true
+      ),
+
+      new Platform(
+        this,
+        { name: 'platform-right3', x: 25, y: -2, width: 10, depth: 5, mass: 10, collisionFlags: 2 },
+        platformMaterial,
+        false
+      ),
+      new Platform(
+        this,
+        { name: 'platform-right3', x: 30, y: 8, width: 10, depth: 5, mass: 10, collisionFlags: 2 },
+        platformMaterial,
+        false
+      ),
+      new Platform(
+        this,
+        { name: 'platform-right3', x: 32, y: -10, width: 10, depth: 5, mass: 10, collisionFlags: 2 },
+        platformMaterial,
+        false
+      ),
+      new Platform(
+        this,
+        { name: 'platform-right3', x: 50, y: 20, width: 10, depth: 5, mass: 10, collisionFlags: 2 },
+        platformMaterial,
+        false
+      ),
+      new Platform(
+        this,
+        { name: 'platform-right3', x: 55, y: 11, width: 10, depth: 5, mass: 10, collisionFlags: 2 },
+        platformMaterial,
+        false
       )
     ]
 
@@ -130,7 +161,11 @@ export default class MainScene extends Scene3D {
     this.robot = new Player(this)
 
     //create enemy
-    for (let i = 0; i < 20; i++) new Enemy(this)
+    //for (let i = 0; i < 20; i++) new Enemy(this)
+
+    //create enemy with given position
+    const newEnemy = new Enemy(this, 5, 15, 0)
+    this.enemies.push(newEnemy)
   }
 
   update(time, delta) {
@@ -152,6 +187,7 @@ export default class MainScene extends Scene3D {
     })
 
     this.robot.update(this)
+    //  console.log(this.robot.position)
     /*if (this.robot && this.robot.body) {
       // add just the camera position
       this.third.camera.position.copy(this.robot.position).add(new THREE.Vector3(0, 5, 16))

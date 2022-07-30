@@ -6,6 +6,7 @@ export default class menuScene extends Scene3D {
   }
 
   preload() {
+    this.load.preload('hero', '/assets/spritesheet/adventurer-Sheet.png')
     this.third.load.preload('sky', '../../assets/img/sky.png')
     this.load.html('star', '../../assets/svg/star.svg')
   }
